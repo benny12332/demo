@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: container
-          image: 'quay.io/benny12332/nginx-fix:1.14.2'
+          image: 'quay.io/benny12332/nginx:1.14.3'
           ports:
             - containerPort: 8080
               protocol: TCP
