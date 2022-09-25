@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: scc1
+  name: test-orig
+spec:
+  selector:
+    matchLabels:
+      app: test-orig
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test-orig
+    spec:
+      containers:
+        - name: container
+          image: 'quay.io/benny12332/nginx:1.14.2'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env: []
+      imagePullSecrets:
+        - name: benny12332-pull-secret
+  strategy:
+    type: Recreate

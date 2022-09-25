@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: scc1
+  name: test-fix
+  annotations: {}
+spec:
+  selector:
+    matchLabels:
+      app: test-fix
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test-fix
+    spec:
+      containers:
+        - name: container
+          image: 'quay.io/benny12332/nginx-fix:1.14.2'
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env: []
+      imagePullSecrets:
+        - name: benny12332-pull-secret
+  strategy:
+    type: Recreate
+  paused: false

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'httpd-02'
+spec:
+  selector:
+    matchLabels:
+      app: httpd-02
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: httpd-02
+    spec:
+      containers:
+        - name: httpd-02
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/openshift/httpd:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
